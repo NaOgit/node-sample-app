@@ -1,8 +1,42 @@
 # Sparta Node Sample App
 
+## Running Vagrant
+
+To set up vagrant, run:  
+> vagrant init ubuntu/xenial64
+
+To create and configure guest machines according to your Vagrantfile, run:
+> vagrant up
+
+Change the code in the Vagrantfile to:
+
+> Vagrant.configure("2") do |config|  
+config.vm.box = "ubuntu/xenial64"
+config.vm.network("private_network", ip: "192.168.10.100")
+config.hostsupdater.aliases = ["development.local"]  
+end
+
+Run:
+> vagrant reload
+
+Enter the vagrant secure shell by executing:
+> vagrant ssh
+
+Get Vagrant update:
+> sudo apt-get update -y
+
+Install Nginx:
+> sudo apt-get install nginx -y
+
+Check for the hosts IP address:
+> cat /etc/hosts
+
+---
+
+
 ## Description
 
-This app is intended for use with the Sparta Global Devops Stream as a sample app. You can clone the repo and use it as is but no changes will be accepted on this branch. 
+This app is intended for use with the Sparta Global Devops Stream as a sample app. You can clone the repo and use it as is but no changes will be accepted on this branch.
 
 To use the repo within your course you should fork it.
 
@@ -57,7 +91,3 @@ npm test
 ```
 
 The test for posts will fail ( as expected ) if the database has not been correctly setup.
-
-
-
-
